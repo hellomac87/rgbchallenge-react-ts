@@ -1,10 +1,10 @@
 import * as constants from "../constants";
 
-export interface CreateQuestion {
+export interface IcreateQuestion {
   type: constants.CREATE_QUESTION;
 }
 
-export const createQuestion = (): CreateQuestion => {
+export const createQuestion = (): IcreateQuestion => {
   console.log("createQuestion");
   return {
     type: constants.CREATE_QUESTION
