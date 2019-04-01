@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { StoreState } from "../types/index";
 
-import questionReducer from "./question_reducer";
+import questionReducer from "./question";
 
 const RootReducer = combineReducers<StoreState>({
   question: questionReducer
