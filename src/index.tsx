@@ -7,14 +7,17 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 import RootReducer from "./reducers";
-import { StoreState } from "./types/index";
 
 import * as serviceWorker from "./serviceWorker";
 
-const store = createStore(RootReducer);
+const store = createStore(
+  RootReducer,
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+);
 
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById("root")
