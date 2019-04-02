@@ -1,29 +1,40 @@
 import React, { Component } from "react";
 
 // types dependencies
-import { StoreState } from "../types";
+import { StoreState } from "../store";
 
 // redux dependencies
-import * as actions from "../actions";
+import { createQuestion } from "../store/question/actions";
 import { connect } from "react-redux";
 import { returntypeof } from "react-redux-typescript";
+
 // component dependencies
 import Question from "../components/Question";
 
+// mapStateToProps
 const mapStateToProps = (state: StoreState) => {
   return {
     question: state.question
   };
 };
 
+// dispatchToProps
 const dispatchToProps = {
-  createQuestion: actions.createQuestion
+  createQuestion: createQuestion
 };
+
 // type definition
 const stateProps = returntypeof(mapStateToProps);
 type Props = typeof stateProps & typeof dispatchToProps;
 
-class QuestionContainer extends Component<Props, {}> {
+/*
+type Props = {
+  question: number[];
+  createQuestion: typeof actions.createQuestion;
+};
+*/
+
+class QuestionContainer extends Component<Props> {
   render() {
     const { question, createQuestion } = this.props;
     return (

@@ -14,6 +14,7 @@ const Question = ({ question }: Props) => {
   return (
     <div className={cx("container")}>
       {question[0]},{question[1]},{question[2]}
+      <div className={cx("circle")} />
     </div>
   );
 };

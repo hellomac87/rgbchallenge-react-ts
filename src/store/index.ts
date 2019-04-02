@@ -1,8 +1,21 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
 import logger from "redux-logger";
-import RootReducer from "../reducers";
 
+// reducers
+import questionReducer from "./question/reducers";
+
+// make rootReducer
+const rootReducer = combineReducers({
+  question: questionReducer
+});
+
+// declare StoreState interface
+export interface StoreState {
+  question: number[];
+}
+
+// configureStore
 const configureStore = () => {
   const middlewares: any[] = [];
 
@@ -11,6 +24,7 @@ const configureStore = () => {
     middlewares.push(logger);
   }
 
+  // redux devtool
   const composeEnhancers =
     (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -18,7 +32,8 @@ const configureStore = () => {
     applyMiddleware(...middlewares)
     // other store enhancers if any
   );
-  const store = createStore(RootReducer, enhancer);
+
+  const store = createStore(rootReducer, enhancer);
 
   return store;
 };
