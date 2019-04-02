@@ -7,7 +7,6 @@ export interface IcreateQuestion {
 export type createQuestionAction = IcreateQuestion;
 
 export const createQuestion = (): IcreateQuestion => {
-  console.log("createQuestion");
   return {
     type: constants.CREATE_QUESTION
   };

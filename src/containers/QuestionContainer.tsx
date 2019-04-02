@@ -25,7 +25,6 @@ type Props = typeof stateProps & typeof dispatchToProps;
 
 class QuestionContainer extends Component<Props, {}> {
   render() {
-    console.log(this.props);
     const { question, createQuestion } = this.props;
     return (
       <div>
