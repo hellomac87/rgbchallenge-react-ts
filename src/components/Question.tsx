@@ -11,7 +11,11 @@ export interface Props {
 }
 
 const Question = ({ question }: Props) => {
-  return <div className={cx("container")}>{question}</div>;
+  return (
+    <div className={cx("container")}>
+      {question[0]},{question[1]},{question[2]}
+    </div>
+  );
 };
 
 export default Question;

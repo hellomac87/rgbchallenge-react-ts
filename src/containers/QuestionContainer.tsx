@@ -1,18 +1,38 @@
 import React, { Component } from "react";
 
-// redux dependancies
-import * as actions from "../actions/";
+// types dependencies
+import { StoreState } from "../types";
+
+// redux dependencies
+import * as actions from "../actions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+// component dependencies
 import Question from "../components/Question";
 
-class QuestionContainer extends Component {
+interface IQuestionProps {
+  question: number[];
+}
+
+interface IQuestionState {}
+
+class QuestionContainer extends Component<IQuestionProps, IQuestionState> {
   render() {
+    const { question } = this.props;
     return (
       <div>
-        <Question question={[211, 211, 211]} />
+        <Question question={question} />
         <button>button</button>
       </div>
     );
   }
 }
 
-export default QuestionContainer;
+const mapStateToProps = (state: StoreState) => {
+  return {
+    question: state.question
+  };
+};
+
+export default connect(mapStateToProps)(QuestionContainer);
