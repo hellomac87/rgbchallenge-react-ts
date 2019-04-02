@@ -17,9 +17,13 @@ interface Props {
 const Question = ({ question, createQuestion }: Props) => {
   return (
     <div className={cx("container")}>
-      {question.answer}
+      {question.problems[question.answer]}
       <br />
-      {question.problems[0]},{question.problems[1]},{question.problems[2]}
+
+      {question.problems.map((p: string, i: number) => (
+        <span key={i} className={cx("circle")} style={{ backgroundColor: p }} />
+      ))}
+
       <br />
       <button onClick={createQuestion}>start</button>
     </div>

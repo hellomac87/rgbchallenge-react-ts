@@ -1,9 +1,9 @@
 import { QuestionState, CREATE_QUESTION, QuestionActionTypes } from "./types";
-
+import { answer, problems } from "./actions";
 // initialState
 const initialState: QuestionState = {
-  answer: 0,
-  problems: [1, 1, 1]
+  answer: answer(),
+  problems: problems()
   // activeItem: null
 };
 

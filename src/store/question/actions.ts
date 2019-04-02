@@ -8,16 +8,19 @@ export const answer = (): number => {
   return Math.floor(Math.random() * 3);
 };
 
-export const problem = (): [number, number, number] => {
-  return [randomMath(), randomMath(), randomMath()];
+export const createRGB = (): string => {
+  return `rgb(${randomMath()},${randomMath()},${randomMath()})`;
+};
+
+export const problems = (): string[] => {
+  return [createRGB(), createRGB(), createRGB()];
 };
 
 // action creator
 export const createQuestion = () => {
-  console.log("createQuestion");
   return {
     type: CREATE_QUESTION,
     answer: answer(),
-    problem: problem()
+    problems: problems()
   };
 };
