@@ -1,11 +1,17 @@
 // declare reducer state type
-export type QuestionState = number[];
+export interface QuestionState {
+  answer: number;
+  problems: number[];
+  // activeItem: number | null;
+}
 
 // constants for actions & reducers
 export const CREATE_QUESTION = "CREATE_QUESTION";
-export type CREATE_QUESTION = typeof CREATE_QUESTION;
 
-// interface for actions
-export interface IcreateQuestion {
-  type: CREATE_QUESTION;
+interface CreateQuestionAction {
+  type: typeof CREATE_QUESTION;
+  answer: number;
+  problems: number[];
 }
+
+export type QuestionActionTypes = CreateQuestionAction;

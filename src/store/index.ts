@@ -3,17 +3,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import logger from "redux-logger";
 
 // reducers
-import questionReducer from "./question/reducers";
+import { questionReducer } from "./question/reducers";
 
 // make rootReducer
 const rootReducer = combineReducers({
   question: questionReducer
 });
 
-// declare StoreState interface
-export interface StoreState {
-  question: number[];
-}
+export type AppState = ReturnType<typeof rootReducer>;
 
 // configureStore
 const configureStore = () => {

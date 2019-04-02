@@ -1,24 +1,24 @@
-import { QuestionState, CREATE_QUESTION } from "./types";
-
-const randomMath = (): number => {
-  return Math.floor(Math.random() * (255 - 0 + 1) + 0);
-};
+import { QuestionState, CREATE_QUESTION, QuestionActionTypes } from "./types";
 
 // initialState
-const initialState: QuestionState = [randomMath(), randomMath(), randomMath()];
-
-// actionType
-type actionType = { type: string };
+const initialState: QuestionState = {
+  answer: 0,
+  problems: [1, 1, 1]
+  // activeItem: null
+};
 
 // reducer
-const questionReducer = (state = initialState, action: actionType) => {
+export const questionReducer = (
+  state = initialState,
+  action: QuestionActionTypes
+) => {
   switch (action.type) {
     case CREATE_QUESTION:
-      return [randomMath(), randomMath(), randomMath()];
+      return {
+        answer: action.answer,
+        problems: action.problems
+      };
     default:
       return state;
   }
 };
-
-// export reducer
-export default questionReducer;

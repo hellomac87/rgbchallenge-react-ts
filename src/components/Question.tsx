@@ -1,20 +1,27 @@
 import React from "react";
 
+import { QuestionState } from "../store/question/types";
+import { createQuestion } from "../store/question/actions";
+
 import classNames from "classnames/bind";
 
 import styles from "./Question.module.scss";
 
 const cx = classNames.bind(styles);
 
-export interface Props {
-  question: number[];
+interface Props {
+  question: QuestionState;
+  createQuestion: typeof createQuestion;
 }
 
-const Question = ({ question }: Props) => {
+const Question = ({ question, createQuestion }: Props) => {
   return (
     <div className={cx("container")}>
-      {question[0]},{question[1]},{question[2]}
-      <div className={cx("circle")} />
+      {question.answer}
+      <br />
+      {question.problems[0]},{question.problems[1]},{question.problems[2]}
+      <br />
+      <button onClick={createQuestion}>start</button>
     </div>
   );
 };
