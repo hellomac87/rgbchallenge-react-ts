@@ -5,29 +5,10 @@ import { StoreState } from "../types";
 
 // redux dependencies
 import * as actions from "../actions";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-
+import { returntypeof } from "react-redux-typescript";
 // component dependencies
 import Question from "../components/Question";
-
-interface IQuestionProps {
-  question: number[];
-}
-
-interface IQuestionState {}
-
-class QuestionContainer extends Component<IQuestionProps, IQuestionState> {
-  render() {
-    const { question } = this.props;
-    return (
-      <div>
-        <Question question={question} />
-        <button>button</button>
-      </div>
-    );
-  }
-}
 
 const mapStateToProps = (state: StoreState) => {
   return {
@@ -35,4 +16,27 @@ const mapStateToProps = (state: StoreState) => {
   };
 };
 
-export default connect(mapStateToProps)(QuestionContainer);
+const dispatchToProps = {
+  createQuestion: actions.createQuestion
+};
+// type definition
+const stateProps = returntypeof(mapStateToProps);
+type Props = typeof stateProps & typeof dispatchToProps;
+
+class QuestionContainer extends Component<Props, {}> {
+  render() {
+    console.log(this.props);
+    const { question, createQuestion } = this.props;
+    return (
+      <div>
+        <Question question={question} />
+        <button onClick={createQuestion}>button</button>
+      </div>
+    );
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  dispatchToProps
+)(QuestionContainer);
