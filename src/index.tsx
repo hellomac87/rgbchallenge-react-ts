@@ -4,17 +4,12 @@ import "./index.scss";
 import App from "./App";
 
 import { Provider } from "react-redux";
-import { createStore } from "redux";
 
-import RootReducer from "./reducers";
+import configureStore from "./store/configureStore";
 
 import * as serviceWorker from "./serviceWorker";
 
-const store = createStore(
-  RootReducer,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
-);
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>

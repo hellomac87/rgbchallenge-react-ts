@@ -6,7 +6,12 @@ import Question from "../components/Question";
 
 class QuestionContainer extends Component {
   render() {
-    return <Question question={[211, 211, 211]} />;
+    return (
+      <div>
+        <Question question={[211, 211, 211]} />
+        <button>button</button>
+      </div>
+    );
   }
 }
 
