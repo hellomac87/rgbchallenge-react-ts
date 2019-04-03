@@ -1,9 +1,14 @@
 // redux thunk dependencies
-import { AppState } from "../index";
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
-import { AnyAction } from "redux";
+// import { AppState } from "../index";
+// import { ThunkAction, ThunkDispatch } from "redux-thunk";
+// import { AnyAction } from "redux";
 
-import { CREATE_QUESTION, SEND_USER_ANSWER, THUNK_ACTION } from "./types";
+import {
+  CREATE_QUESTION,
+  SEND_USER_ANSWER,
+  REQUEST_ANSWER,
+  QuestionActionTypes
+} from "./types";
 
 export const randomMath = (): number => {
   return Math.floor(Math.random() * (255 - 0 + 1) + 0);
@@ -22,7 +27,7 @@ export const problems = (): string[] => {
 };
 
 // action creator
-export const createQuestion = () => {
+export const createQuestion = (): QuestionActionTypes => {
   return {
     type: CREATE_QUESTION,
     answer: answer(),
@@ -30,14 +35,14 @@ export const createQuestion = () => {
   };
 };
 
-export const sendUserAnswer = (userAnswer: number) => {
+export const sendUserAnswer = (userAnswer: number): QuestionActionTypes => {
   return {
     type: SEND_USER_ANSWER,
     userAnswer
   };
 };
 
-export const thunkAction = (userAnswer: number) => (
+export const requestAnswer = (userAnswer: number) => (
   dispatch: any,
   getState: any
 ): any => {
@@ -48,6 +53,6 @@ export const thunkAction = (userAnswer: number) => (
   }
 
   return {
-    type: THUNK_ACTION
+    type: REQUEST_ANSWER
   };
 };

@@ -9,7 +9,7 @@ export interface QuestionState {
 // constants for actions & reducers
 export const CREATE_QUESTION = "CREATE_QUESTION";
 export const SEND_USER_ANSWER = "SEND_USER_ANSWER";
-export const THUNK_ACTION = "THUNK_ACTION";
+export const REQUEST_ANSWER = "REQUEST_ANSWER";
 
 interface CreateQuestionAction {
   type: typeof CREATE_QUESTION;
@@ -22,11 +22,11 @@ interface SendUserAnswerAction {
   userAnswer: number;
 }
 
-interface ThunkAction {
-  type: typeof THUNK_ACTION;
+interface RequestAnswerAction {
+  type: typeof REQUEST_ANSWER;
 }
 
 export type QuestionActionTypes =
   | CreateQuestionAction
   | SendUserAnswerAction
-  | ThunkAction;
+  | RequestAnswerAction;
