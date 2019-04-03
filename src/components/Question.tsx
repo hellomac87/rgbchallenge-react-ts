@@ -1,7 +1,11 @@
 import React from "react";
 
 import { QuestionState } from "../store/question/types";
-import { createQuestion, sendUserAnswer } from "../store/question/actions";
+import {
+  createQuestion,
+  sendUserAnswer,
+  thunkAction
+} from "../store/question/actions";
 
 import classNames from "classnames/bind";
 
@@ -13,9 +17,15 @@ interface Props {
   question: QuestionState;
   createQuestion: typeof createQuestion;
   sendUserAnswer: typeof sendUserAnswer;
+  thunkAction: typeof thunkAction;
 }
 
-const Question = ({ question, createQuestion, sendUserAnswer }: Props) => {
+const Question = ({
+  question,
+  createQuestion,
+  sendUserAnswer,
+  thunkAction
+}: Props) => {
   return (
     <div className={cx("container")}>
       {question.problems[question.answer]}
@@ -24,7 +34,7 @@ const Question = ({ question, createQuestion, sendUserAnswer }: Props) => {
       {question.problems.map((p: string, i: number) => (
         <span
           key={i}
-          onClick={() => sendUserAnswer(i)}
+          onClick={() => thunkAction(i)}
           className={cx("circle")}
           style={{ backgroundColor: p }}
         />

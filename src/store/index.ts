@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-// import thunk from "redux-thunk";
+import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 // reducers
@@ -18,7 +18,7 @@ const rootReducer = combineReducers<AppState>({
 
 // configureStore
 const configureStore = () => {
-  const middlewares: any[] = [];
+  const middlewares: any[] = [thunk];
 
   // logger, works only in development environments
   if (process.env.NODE_ENV !== "production") {
