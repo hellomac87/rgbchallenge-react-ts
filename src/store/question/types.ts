@@ -2,11 +2,13 @@
 export interface QuestionState {
   answer: number;
   problems: string[];
-  // activeItem: number | null;
+  activeItem: number | null;
+  userAnswer: number | null;
 }
 
 // constants for actions & reducers
 export const CREATE_QUESTION = "CREATE_QUESTION";
+export const SEND_USER_ANSWER = "SEND_USER_ANSWER";
 
 interface CreateQuestionAction {
   type: typeof CREATE_QUESTION;
@@ -14,4 +16,9 @@ interface CreateQuestionAction {
   problems: string[];
 }
 
-export type QuestionActionTypes = CreateQuestionAction;
+interface SendUserAnswerAction {
+  type: typeof SEND_USER_ANSWER;
+  userAnswer: number;
+}
+
+export type QuestionActionTypes = CreateQuestionAction | SendUserAnswerAction;

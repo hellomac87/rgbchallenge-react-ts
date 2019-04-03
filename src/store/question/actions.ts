@@ -1,4 +1,4 @@
-import { CREATE_QUESTION } from "./types";
+import { CREATE_QUESTION, SEND_USER_ANSWER } from "./types";
 
 export const randomMath = (): number => {
   return Math.floor(Math.random() * (255 - 0 + 1) + 0);
@@ -22,5 +22,12 @@ export const createQuestion = () => {
     type: CREATE_QUESTION,
     answer: answer(),
     problems: problems()
+  };
+};
+
+export const sendUserAnswer = (userAnswer: number) => {
+  return {
+    type: SEND_USER_ANSWER,
+    userAnswer
   };
 };

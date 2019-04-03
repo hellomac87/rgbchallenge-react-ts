@@ -4,13 +4,17 @@ import logger from "redux-logger";
 
 // reducers
 import { questionReducer } from "./question/reducers";
+import { QuestionState } from "./question/types";
+
+// AppState interface
+export interface AppState {
+  question: QuestionState;
+}
 
 // make rootReducer
-const rootReducer = combineReducers({
+const rootReducer = combineReducers<AppState>({
   question: questionReducer
 });
-
-export type AppState = ReturnType<typeof rootReducer>;
 
 // configureStore
 const configureStore = () => {
