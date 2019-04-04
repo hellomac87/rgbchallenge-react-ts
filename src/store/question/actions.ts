@@ -7,6 +7,8 @@ import {
   CREATE_QUESTION,
   SEND_USER_ANSWER,
   REQUEST_ANSWER,
+  ADD_SCORE,
+  RESET_GAME,
   QuestionActionTypes
 } from "./types";
 
@@ -44,6 +46,12 @@ export const sendUserAnswer = (userAnswer: number): QuestionActionTypes => {
   };
 };
 
+export const addScore = (): QuestionActionTypes => {
+  return {
+    type: ADD_SCORE
+  };
+};
+
 export const requestAnswer = (userAnswer: number) => (
   dispatch: any,
   getState: any
@@ -51,10 +59,12 @@ export const requestAnswer = (userAnswer: number) => (
   if (getState().question.answer === userAnswer) {
     // correct dispatches
     console.log("정답");
+    dispatch(addScore());
     dispatch(createQuestion());
   } else {
     // incorrect dispatches
     console.log("오답");
+    // dispatch(resetScore());
     dispatch(toggleModal(true));
     // dispatch(createQuestion());
   }
@@ -62,4 +72,13 @@ export const requestAnswer = (userAnswer: number) => (
   return {
     type: REQUEST_ANSWER
   };
+};
+
+export const resetGame = () => (dispatch: any, getState: any): any => {
+  // 모달닫기
+  dispatch(toggleModal(false));
+  console.log("aa");
+  dispatch({
+    type: RESET_GAME
+  });
 };

@@ -4,7 +4,8 @@ import { QuestionState } from "../store/question/types";
 import {
   createQuestion,
   sendUserAnswer,
-  requestAnswer
+  requestAnswer,
+  resetGame
 } from "../store/question/actions";
 
 import classNames from "classnames/bind";
@@ -18,19 +19,22 @@ interface Props {
   createQuestion: typeof createQuestion;
   sendUserAnswer: typeof sendUserAnswer;
   requestAnswer: typeof requestAnswer;
+  resetGame: typeof resetGame;
 }
 
 const Question = ({
   question,
   createQuestion,
   sendUserAnswer,
-  requestAnswer
+  requestAnswer,
+  resetGame
 }: Props) => {
   return (
     <div className={cx("container")}>
       {question.problems[question.answer]}
       <br />
-
+      <span>{question.score}</span>
+      <br />
       {question.problems.map((p: string, i: number) => (
         <span
           key={i}
@@ -41,7 +45,7 @@ const Question = ({
       ))}
 
       <br />
-      <button onClick={() => createQuestion()}>start</button>
+      <button onClick={() => resetGame()}>start</button>
     </div>
   );
 };

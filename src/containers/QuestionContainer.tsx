@@ -5,7 +5,8 @@ import { AppState } from "../store";
 import {
   createQuestion,
   sendUserAnswer,
-  requestAnswer
+  requestAnswer,
+  resetGame
 } from "../store/question/actions";
 import { connect } from "react-redux";
 
@@ -21,5 +22,5 @@ const mapStateToProps = (state: AppState) => {
 
 export default connect(
   mapStateToProps,
-  { createQuestion, sendUserAnswer, requestAnswer }
+  { createQuestion, sendUserAnswer, requestAnswer, resetGame }
 )(Question);

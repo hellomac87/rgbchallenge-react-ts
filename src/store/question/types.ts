@@ -4,12 +4,25 @@ export interface QuestionState {
   problems: string[];
   activeItem: number | null;
   userAnswer: number | null;
+  score: number;
 }
 
 // constants for actions & reducers
-export const CREATE_QUESTION = "CREATE_QUESTION";
+// thunkActions
 export const SEND_USER_ANSWER = "SEND_USER_ANSWER";
+export const RESET_GAME = "RESET_GAME";
+
+export const CREATE_QUESTION = "CREATE_QUESTION";
 export const REQUEST_ANSWER = "REQUEST_ANSWER";
+export const ADD_SCORE = "ADD_SCORE";
+
+interface ResetGameAction {
+  type: typeof RESET_GAME;
+}
+
+interface AddScoreAction {
+  type: typeof ADD_SCORE;
+}
 
 interface CreateQuestionAction {
   type: typeof CREATE_QUESTION;
@@ -29,4 +42,6 @@ interface RequestAnswerAction {
 export type QuestionActionTypes =
   | CreateQuestionAction
   | SendUserAnswerAction
-  | RequestAnswerAction;
+  | RequestAnswerAction
+  | AddScoreAction
+  | ResetGameAction;
