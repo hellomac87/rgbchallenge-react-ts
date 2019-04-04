@@ -10,6 +10,8 @@ import {
   QuestionActionTypes
 } from "./types";
 
+import { toggleModal } from "../modal/actions";
+
 export const randomMath = (): number => {
   return Math.floor(Math.random() * (255 - 0 + 1) + 0);
 };
@@ -47,9 +49,14 @@ export const requestAnswer = (userAnswer: number) => (
   getState: any
 ): any => {
   if (getState().question.answer === userAnswer) {
+    // correct dispatches
     console.log("정답");
-  } else {
     dispatch(createQuestion());
+  } else {
+    // incorrect dispatches
+    console.log("오답");
+    dispatch(toggleModal(true));
+    // dispatch(createQuestion());
   }
 
   return {

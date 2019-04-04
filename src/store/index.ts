@@ -6,14 +6,19 @@ import logger from "redux-logger";
 import { questionReducer } from "./question/reducers";
 import { QuestionState } from "./question/types";
 
+import { modalReducer } from "./modal/reducers";
+import { ModalState } from "./modal/types";
+
 // AppState interface
 export interface AppState {
   question: QuestionState;
+  modal: ModalState;
 }
 
 // make rootReducer
 const rootReducer = combineReducers<AppState>({
-  question: questionReducer
+  question: questionReducer,
+  modal: modalReducer
 });
 
 // configureStore

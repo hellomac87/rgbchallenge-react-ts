@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  display: none;
+  z-index: 10;
+  &.show {
+    display: block;
+  }
+}
+
+.inner {
+  color: red;
+}
