@@ -4,6 +4,7 @@ import {
   SEND_USER_ANSWER,
   ADD_SCORE,
   RESET_GAME,
+  ACTIVE_ITEM,
   QuestionActionTypes
 } from "./types";
 
@@ -39,6 +40,11 @@ export const questionReducer = (
       return {
         ...state,
         score: state.score + 100
+      };
+    case ACTIVE_ITEM:
+      return {
+        ...state,
+        activeItem: action.index
       };
 
     case RESET_GAME:

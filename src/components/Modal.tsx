@@ -1,7 +1,9 @@
 import React from "react";
 
 import { ModalState } from "../store/modal/types";
-import { toggleModal } from "../store/modal/actions";
+
+import { QuestionState } from "../store/question/types";
+import { resetGame } from "../store/question/actions";
 
 import classNames from "classnames/bind";
 
@@ -11,14 +13,16 @@ const cx = classNames.bind(styles);
 
 interface Props {
   modal: ModalState;
-  toggleModal: typeof toggleModal;
+  question: QuestionState;
+  resetGame: typeof resetGame;
 }
 
-const Modal = ({ modal, toggleModal }: Props) => {
+const Modal = ({ modal, question, resetGame }: Props) => {
   return (
     <div className={cx("container", modal.show && "show")}>
       <div className={cx("inner")}>틀렸지롱</div>
-      <div onClick={() => toggleModal(false)}>재시작</div>
+      <div>{question.score}</div>
+      <div onClick={() => resetGame()}>재시작</div>
     </div>
   );
 };

@@ -15,6 +15,12 @@ export const RESET_GAME = "RESET_GAME";
 export const CREATE_QUESTION = "CREATE_QUESTION";
 export const REQUEST_ANSWER = "REQUEST_ANSWER";
 export const ADD_SCORE = "ADD_SCORE";
+export const ACTIVE_ITEM = "ACTIVE_ITEM";
+
+interface ActiveItemAction {
+  type: typeof ACTIVE_ITEM;
+  index: number | null;
+}
 
 interface ResetGameAction {
   type: typeof RESET_GAME;
@@ -44,4 +50,5 @@ export type QuestionActionTypes =
   | SendUserAnswerAction
   | RequestAnswerAction
   | AddScoreAction
-  | ResetGameAction;
+  | ResetGameAction
+  | ActiveItemAction;

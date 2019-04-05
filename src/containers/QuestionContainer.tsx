@@ -2,12 +2,7 @@
 import { AppState } from "../store";
 
 // redux dependencies
-import {
-  createQuestion,
-  sendUserAnswer,
-  requestAnswer,
-  resetGame
-} from "../store/question/actions";
+import { requestAnswer, resetGame } from "../store/question/actions";
 import { connect } from "react-redux";
 
 // component dependencies
@@ -22,5 +17,5 @@ const mapStateToProps = (state: AppState) => {
 
 export default connect(
   mapStateToProps,
-  { createQuestion, sendUserAnswer, requestAnswer, resetGame }
+  { requestAnswer, resetGame }
 )(Question);

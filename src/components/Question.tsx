@@ -1,12 +1,7 @@
 import React from "react";
 
 import { QuestionState } from "../store/question/types";
-import {
-  createQuestion,
-  sendUserAnswer,
-  requestAnswer,
-  resetGame
-} from "../store/question/actions";
+import { requestAnswer, resetGame } from "../store/question/actions";
 
 import classNames from "classnames/bind";
 
@@ -16,19 +11,11 @@ const cx = classNames.bind(styles);
 
 interface Props {
   question: QuestionState;
-  createQuestion: typeof createQuestion;
-  sendUserAnswer: typeof sendUserAnswer;
   requestAnswer: typeof requestAnswer;
   resetGame: typeof resetGame;
 }
 
-const Question = ({
-  question,
-  createQuestion,
-  sendUserAnswer,
-  requestAnswer,
-  resetGame
-}: Props) => {
+const Question = ({ question, requestAnswer, resetGame }: Props) => {
   return (
     <div className={cx("container")}>
       {question.problems[question.answer]}
@@ -39,7 +26,7 @@ const Question = ({
         <span
           key={i}
           onClick={() => requestAnswer(i)}
-          className={cx("circle")}
+          className={cx("circle", question.activeItem === i && "active")}
           style={{ backgroundColor: p }}
         />
       ))}

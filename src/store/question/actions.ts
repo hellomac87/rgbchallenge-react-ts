@@ -9,11 +9,13 @@ import {
   REQUEST_ANSWER,
   ADD_SCORE,
   RESET_GAME,
+  ACTIVE_ITEM,
   QuestionActionTypes
 } from "./types";
 
 import { toggleModal } from "../modal/actions";
 
+// helper methods
 export const randomMath = (): number => {
   return Math.floor(Math.random() * (255 - 0 + 1) + 0);
 };
@@ -52,6 +54,14 @@ export const addScore = (): QuestionActionTypes => {
   };
 };
 
+export const activeItem = (index: number | null): QuestionActionTypes => {
+  return {
+    type: ACTIVE_ITEM,
+    index
+  };
+};
+
+// thunk action creator
 export const requestAnswer = (userAnswer: number) => (
   dispatch: any,
   getState: any
@@ -65,6 +75,7 @@ export const requestAnswer = (userAnswer: number) => (
     // incorrect dispatches
     console.log("오답");
     // dispatch(resetScore());
+    dispatch(activeItem(userAnswer));
     dispatch(toggleModal(true));
     // dispatch(createQuestion());
   }
@@ -77,7 +88,7 @@ export const requestAnswer = (userAnswer: number) => (
 export const resetGame = () => (dispatch: any, getState: any): any => {
   // 모달닫기
   dispatch(toggleModal(false));
-  console.log("aa");
+
   dispatch({
     type: RESET_GAME
   });
