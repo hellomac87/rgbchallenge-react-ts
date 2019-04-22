@@ -12,11 +12,19 @@ const cx = classNames.bind(styles);
 class App extends Component {
   render() {
     return (
-      <div className={cx("container")}>
-        react
-        <QuestionContainer />
-        <ModalContainer />
-      </div>
+      <section className={cx("container")}>
+        <article>
+          <header className={cx("header")}>
+            <h1 className={cx("title")}>RGB</h1>
+            <h2 className={cx("sub_title")}>GUESSING CHALLENGE</h2>
+          </header>
+
+          <section className={cx("content")}>
+            <QuestionContainer />
+            <ModalContainer />
+          </section>
+        </article>
+      </section>
     );
   }
 }

@@ -17,7 +17,11 @@ interface Props {
 
 const Question = ({ question, requestAnswer, resetGame }: Props) => {
   return (
-    <div className={cx("container")}>
+    <section className={cx("container")}>
+      <article>
+        <h1>RGB CHALLENGE</h1>
+      </article>
+
       {question.problems[question.answer]}
       <br />
       <span>{question.score}</span>
@@ -33,7 +37,7 @@ const Question = ({ question, requestAnswer, resetGame }: Props) => {
 
       <br />
       <button onClick={() => resetGame()}>start</button>
-    </div>
+    </section>
   );
 };
 
